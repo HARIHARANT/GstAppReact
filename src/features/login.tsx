@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const loginSlice = createSlice({
   name: 'login',
-  initialState: {
-    value: localStorage.getItem('user'),
-  },
+  initialState: {},
   reducers: {
     login: (state, action) => {
+      console.log('Data:: '+action);
       state.value = action.payload;
     },
   },

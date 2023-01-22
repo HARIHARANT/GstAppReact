@@ -45,8 +45,8 @@ const LoginForm = () => {
   const loginSubmit = (values) => {
     localStorage.setItem('user', values);
     const { email, password, remember } = values;
-    console.log(values);
-    dispatch(login({ email, password, remember }));
+    console.log(email + ' ' + password + ' ' + remember);
+    dispatch({ type: 'login', payload: { email, password, remember } });
   };
 
   const from = location.state?.from?.pathname || '/';
@@ -68,7 +68,7 @@ const LoginForm = () => {
       setTimeout(() => {
         console.log('submited!!');
         loginSubmit(values);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
       }, 0);
     },
   });
