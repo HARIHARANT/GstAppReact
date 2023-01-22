@@ -36,8 +36,17 @@ const LoginForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
+  const initialValue = {
+    email: '',
+    password: '',
+    remember: true,
+  };
+
   const loginSubmit = (values) => {
-    dispatch(login({ ...values }));
+    localStorage.setItem('user', values);
+    const { email, password, remember } = values;
+    console.log(values);
+    dispatch(login({ email, password, remember }));
   };
 
   const from = location.state?.from?.pathname || '/';
@@ -52,13 +61,7 @@ const LoginForm = () => {
   });
 
   const formik = useFormik({
-    initialValues: {
-      value: {
-        email: '',
-        password: '',
-        remember: true,
-      },
-    },
+    initialValues: initialValue,
     validationSchema: LoginSchema,
     onSubmit: () => {
       console.log('submitting...');
