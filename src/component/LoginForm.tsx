@@ -27,10 +27,19 @@ const animate = {
     delay: 0.16,
   },
 };
+import globalObj from './Common';
+import { useDispatch } from 'react-redux';
+import login from '../features/login';
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  const loginSubmit = (values) => {
+    dispatch(login({ ...values }));
+  };
+
   const from = location.state?.from?.pathname || '/';
 
   const [showPassword, setShowPassword] = useState(false);
@@ -44,18 +53,20 @@ const LoginForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
-      remember: true,
+      value: {
+        email: '',
+        password: '',
+        remember: true,
+      },
     },
     validationSchema: LoginSchema,
     onSubmit: () => {
       console.log('submitting...');
       setTimeout(() => {
         console.log('submited!!');
-        //setAuth(true);
+        loginSubmit(values);
         navigate(from, { replace: true });
-      }, 2000);
+      }, 0);
     },
   });
 

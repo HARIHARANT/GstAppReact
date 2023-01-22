@@ -8,12 +8,18 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 export default function App() {
   const [auth, setAuth] = React.useState(false);
-  //const location = useLocation();
+  const location = useLocation();
 
   return (
     <div>
       <CssBaseline />
-      <LoginScr />
+      <Routes>
+        <Route path="/login" element={<LoginScr />} />
+        <Route
+          path="/"
+          element={<Navigate to="/login" state={{ from: location }} replace />}
+        />
+      </Routes>
     </div>
   );
 }
