@@ -28,7 +28,7 @@ const animate = {
   },
 };
 
-const LoginForm = ({ setAuth }) => {
+const LoginForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
@@ -53,7 +53,7 @@ const LoginForm = ({ setAuth }) => {
       console.log('submitting...');
       setTimeout(() => {
         console.log('submited!!');
-        setAuth(true);
+        //setAuth(true);
         navigate(from, { replace: true });
       }, 2000);
     },

@@ -1,13 +1,19 @@
 import * as React from 'react';
 import './style.css';
-import Login from './src/pages/Login';
+import LoginComp from './src/component/Login';
+import LoginScr from './src/page/LoginScr';
 import Profile from './src/component/Profile';
+import { CssBaseline } from '@mui/material';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 export default function App() {
+  const [auth, setAuth] = React.useState(false);
+  //const location = useLocation();
+
   return (
     <div>
-      <Login />
-      <Profile />
+      <CssBaseline />
+      <LoginComp />
     </div>
   );
 }

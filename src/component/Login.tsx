@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/login';
 import globalObj from './Common';
-const Login = () => {
+const LoginComp = () => {
   const dispatch = useDispatch();
 
   const loginSubmit = (values) => {
@@ -74,4 +74,4 @@ const Login = () => {
   );
 };
 
-//export default Login;
+export default LoginComp;
