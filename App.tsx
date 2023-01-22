@@ -13,7 +13,7 @@ export default function App() {
   return (
     <div>
       <CssBaseline />
-      <LoginComp />
+      <LoginScr />
     </div>
   );
 }
